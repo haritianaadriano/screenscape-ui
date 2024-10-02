@@ -48,7 +48,7 @@ function App() {
         {isLoading ? (
           <Skeleton variant='rounded' width={250} height={200} />
         ) : movie ? (
-          <CustomCard item={movie} />
+          <CustomCard handleClick={handleClick} item={movie} />
         ) : (
           <button
             onClick={handleClick}
