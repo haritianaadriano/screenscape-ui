@@ -8,10 +8,10 @@ export default function CustomCard({
   handleClick: any;
 }) {
   return (
-    <div className='w-250 h-200 overflow-hidden rounded shadow-lg'>
+    <div className='overflow-hidden rounded shadow-lg'>
       <div className='relative'>
         <a href={item.streamingLink}>
-          <img className='w-full' src={item.poster} alt='' />
+          <img src={item.poster} alt='' />
         </a>
       </div>
       <div className='px-6 py-4'>
