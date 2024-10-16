@@ -17,13 +17,14 @@ function App() {
     console.log(emotion);
   };
 
-  const handleClick1 = async () => {
+  const handleClick1 = async (emotion: string) => {
     try {
       const data = await client
-        .get<Movie[]>('/movies/latest')
+        .get<Movie[]>(`/movies?emotion=${emotion}`)
         .then((response) => response.data);
 
       setMovies(data);
+      console.log(movies);
     } catch (err) {
       console.log(err);
     } finally {
@@ -103,7 +104,10 @@ function App() {
         </div>
 
         <div className='ml-5 mt-20'>
-          <button className='rounded border-b-4 border-blue-700 bg-blue-500 px-4 py-2 font-bold text-white hover:border-blue-500 hover:bg-blue-400'>
+          <button
+            className='rounded border-b-4 border-blue-700 bg-blue-500 px-4 py-2 font-bold text-white hover:border-blue-500 hover:bg-blue-400'
+            onClick={() => handleClick1(emotion!)}
+          >
             List me movies
           </button>
         </div>
