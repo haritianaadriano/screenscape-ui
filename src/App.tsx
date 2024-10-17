@@ -5,6 +5,7 @@ import { client } from './provider/client';
 import { Movie } from './provider/types/Movie';
 import CustomCard from './components/CustomCard';
 import emotionOptions from './provider/types/EmotionOptions';
+import CustomMovieCard from './components/CustomMovieCard';
 
 function App() {
   const [isLoading, setIsLoading] = useState<Boolean>();
@@ -68,6 +69,7 @@ function App() {
           <p className='mb-2 mt-5'>Your best friend to get randomly movies</p>
         </div>
       </header>
+
       <div>
         {isLoading ? (
           <Skeleton variant='rounded' width={250} height={200} />
@@ -83,7 +85,7 @@ function App() {
         )}
       </div>
 
-      <div className='flex'>
+      <div className='flex max-w-sm'>
         <div className='mt-4'>
           <label className='mb-2 mt-10 block text-sm font-medium text-gray-900 dark:text-white'>
             We will give you movies for your feeling
@@ -111,6 +113,10 @@ function App() {
             List me movies
           </button>
         </div>
+      </div>
+
+      <div className='flex flex-wrap'>
+        {movies?.map((movie) => <CustomMovieCard item={movie} />)}
       </div>
     </>
   );
