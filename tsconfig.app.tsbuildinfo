@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/CustomCard.tsx","./src/components/CustomMovieCard.tsx","./src/components/CustomSelect.tsx","./src/provider/client.ts","./src/provider/types/EmotionOptions.ts","./src/provider/types/Movie.ts"],"version":"5.6.2"}

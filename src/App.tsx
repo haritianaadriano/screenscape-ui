@@ -6,6 +6,7 @@ import { Movie } from './provider/types/Movie';
 import CustomCard from './components/CustomCard';
 import emotionOptions from './provider/types/EmotionOptions';
 import CustomMovieCard from './components/CustomMovieCard';
+import MaintenanceOverlay from './components/MaintenanceOverLay';
 
 function App() {
   const [isLoading, setIsLoading] = useState<Boolean>();
@@ -62,62 +63,64 @@ function App() {
 
   return (
     <>
-      <header>
+      <MaintenanceOverlay>
+        <header>
+          <div>
+            <h1 className='text-3xl md:text-5xl'>Screenscape</h1>
+            <h2 className='text-xl md:text-2xl'>Retrieve your movie</h2>
+            <p className='mb-2 mt-5'>Your best friend to get randomly movies</p>
+          </div>
+        </header>
+
         <div>
-          <h1 className='text-3xl md:text-5xl'>Screenscape</h1>
-          <h2 className='text-xl md:text-2xl'>Retrieve your movie</h2>
-          <p className='mb-2 mt-5'>Your best friend to get randomly movies</p>
-        </div>
-      </header>
-
-      <div>
-        {isLoading ? (
-          <Skeleton variant='rounded' width={250} height={200} />
-        ) : movie ? (
-          <CustomCard handleClick={handleClick0} item={movie} />
-        ) : (
-          <button
-            onClick={handleClick0}
-            className='rounded border-b-4 border-blue-700 bg-blue-500 px-4 py-2 font-bold text-white hover:border-blue-500 hover:bg-blue-400'
-          >
-            Suggest me
-          </button>
-        )}
-      </div>
-
-      <div className='flex max-w-sm'>
-        <div className='mt-4'>
-          <label className='mb-2 mt-10 block text-sm font-medium text-gray-900 dark:text-white'>
-            We will give you movies for your feeling
-          </label>
-          <form className='mx-auto max-w-sm'>
-            <select
-              id='countries'
-              className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
-              onChange={handleChange}
+          {isLoading ? (
+            <Skeleton variant='rounded' width={250} height={200} />
+          ) : movie ? (
+            <CustomCard handleClick={handleClick0} item={movie} />
+          ) : (
+            <button
+              onClick={handleClick0}
+              className='rounded border-b-4 border-blue-700 bg-blue-500 px-4 py-2 font-bold text-white hover:border-blue-500 hover:bg-blue-400'
             >
-              {emotionOptions.map((emotionOption) => (
-                <option value={emotionOption.value}>
-                  {emotionOption.label}
-                </option>
-              ))}
-            </select>
-          </form>
+              Suggest me
+            </button>
+          )}
         </div>
 
-        <div className='ml-5 mt-20'>
-          <button
-            className='rounded border-b-4 border-blue-700 bg-blue-500 px-4 py-2 font-bold text-white hover:border-blue-500 hover:bg-blue-400'
-            onClick={() => handleClick1(emotion!)}
-          >
-            List me movies
-          </button>
-        </div>
-      </div>
+        <div className='flex max-w-sm'>
+          <div className='mt-4'>
+            <label className='mb-2 mt-10 block text-sm font-medium text-gray-900 dark:text-white'>
+              We will give you movies for your feeling
+            </label>
+            <form className='mx-auto max-w-sm'>
+              <select
+                id='countries'
+                className='block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500'
+                onChange={handleChange}
+              >
+                {emotionOptions.map((emotionOption) => (
+                  <option value={emotionOption.value}>
+                    {emotionOption.label}
+                  </option>
+                ))}
+              </select>
+            </form>
+          </div>
 
-      <div className='flex flex-wrap'>
-        {movies?.map((movie) => <CustomMovieCard item={movie} />)}
-      </div>
+          <div className='ml-5 mt-20'>
+            <button
+              className='rounded border-b-4 border-blue-700 bg-blue-500 px-4 py-2 font-bold text-white hover:border-blue-500 hover:bg-blue-400'
+              onClick={() => handleClick1(emotion!)}
+            >
+              List me movies
+            </button>
+          </div>
+        </div>
+
+        <div className='flex flex-wrap'>
+          {movies?.map((movie) => <CustomMovieCard item={movie} />)}
+        </div>
+      </MaintenanceOverlay>
     </>
   );
 }
