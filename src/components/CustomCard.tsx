@@ -10,13 +10,12 @@ export default function CustomCard({
   return (
     <div className='overflow-hidden rounded shadow-lg'>
       <div className='relative'>
-        <a href={item.streamingLink}>
-          <img src={item.poster} alt='' />
+        <a>
+          <img src={item.streamingLogo} alt='' />
         </a>
       </div>
       <div className='px-6 py-4'>
         <a
-          href={item.streamingLink}
           className='inline-block text-lg font-semibold transition duration-500 ease-in-out'
         >
           {item.title}
